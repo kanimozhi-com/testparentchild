@@ -1,15 +1,15 @@
 name: Child Workflow
 
 on:
-  workflow_call:
-    inputs:
-      username:
-        required: true
-        type: string
+  repository_dispatch:
+    types: [run-child-workflow]
 
 jobs:
-  say_hello:
+  child_job:
     runs-on: self-hosted
+
     steps:
-      - name: Print greeting from child workflow
-        run: echo "Hello, ${{ inputs.username }}! This is the child workflow."
+      - name: Child Workflow Step
+        run: |
+          echo "Child workflow is running"
+          # child workflow 
