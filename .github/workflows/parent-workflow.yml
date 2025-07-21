@@ -1,0 +1,10 @@
+name: Parent Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call_child_workflow:
+    uses: ./.github/workflows/child-workflow.yml
+    with:
+      username: "GitHub User"
