@@ -1,0 +1,15 @@
+name: Child Workflow
+
+on:
+  workflow_call:
+    inputs:
+      username:
+        required: true
+        type: string
+
+jobs:
+  say_hello:
+    runs-on: self hosted
+    steps:
+      - name: Print greeting from child workflow
+        run: echo "Hello, ${{ inputs.username }}! This is the child workflow."
