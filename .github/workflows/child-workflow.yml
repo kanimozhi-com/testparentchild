@@ -9,7 +9,7 @@ on:
 
 jobs:
   say_hello:
-    runs-on: self hosted
+    runs-on: self-hosted
     steps:
       - name: Print greeting from child workflow
         run: echo "Hello, ${{ inputs.username }}! This is the child workflow."
