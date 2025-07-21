@@ -1,10 +1,17 @@
 name: Parent Workflow
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-  call_child_workflow:
-    uses: ./.github/workflows/child-workflow.yml
-    with:
-      username: "GitHub User"
+  trigger_child_workflow_job:
+    runs-on: self-hosted
+
+    steps:
+      - name: Trigger Child Workflow
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.WORKFLOW_SECRET }}
+          event-type: run-child-workflow
